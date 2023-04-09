@@ -1,23 +1,16 @@
-# Sentiment Analysis Simulation
+# 🚀 Getting Started with Sentiment Analysis Simulation App
 
-Analisis sentimen adalah proses menganalisis teks digital untuk menentukan apakah nada emosional pesan tersebut positif, negatif, atau netral. Saat ini, perusahaan memiliki data teks dalam volume besar seperti email, transkrip obrolan dukungan pelanggan, komentar media sosial, dan ulasan.
+## 📖 Table of Contents
 
-## Install
+- [🚀 Getting Started with Sentiment Analysis Simulation App](#-getting-started-with-sentiment-analysis-simulation-app)
+  - [📖 Table of Contents](#-table-of-contents)
+  - [📝 Introduction](#-introduction)
+  - [📦 Installation](#-installation)
 
-```bash
-python -m venv env
-```
+## 📝 Introduction
 
-```bash
-python -m pip install --upgrade pip
-```
+Analisis sentimen adalah proses menganalisis teks digital untuk menentukan apakah nada emosional pesan tersebut positif atau negatif. Saat ini, perusahaan memiliki data teks dalam volume besar seperti email, transkrip obrolan dukungan pelanggan, komentar media sosial, dan ulasan.
 
-```bash
-pip install -r requirements.txt
-```
+## 📦 Installation
 
-## Usage
-
-```bash
-streamlit run .\app\main.py
-```
+[⬆ Back to Top](#-table-of-contents)

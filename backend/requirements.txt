@@ -1,0 +1,6 @@
+Flask
+nltk
+pandas
+regex
+joblib
+scikit-learn
