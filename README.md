@@ -13,4 +13,9 @@ Analisis sentimen adalah proses menganalisis teks digital untuk menentukan apaka
 
 ## 📦 Installation
 
+1. Clone this repository
+2. Install all dependencies using `pnpm install`
+3. Pull the latest changes from environment variables using `npx dotenv-vault@latest pull`
+4. Run the development server using `pnpm dev` or run the production server using `pnpm start`
+
 [⬆ Back to Top](#-table-of-contents)
