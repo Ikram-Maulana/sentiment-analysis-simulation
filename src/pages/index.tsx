@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import Head from "next/head";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { HiSparkles } from "react-icons/hi";
 
@@ -39,20 +39,17 @@ export default function Home() {
         }
       );
       setPrediction(res.data.data);
+      if (res.data.data.preprocessed === "") {
+        toast.error("Silahkan coba lagi dengan teks ulasan yang berbeda");
+      } else {
+        toast.success("Klasifikasi berhasil");
+      }
       setLoading(false);
     } catch (error) {
       toast.error("Terjadi kesalahan, silahkan coba lagi");
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (prediction.preprocessed === "") {
-      toast.error("Silahkan coba lagi dengan teks ulasan yang berbeda");
-    } else {
-      toast.success("Klasifikasi berhasil");
-    }
-  }, [prediction]);
 
   return (
     <>
