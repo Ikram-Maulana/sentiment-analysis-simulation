@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import Head from "next/head";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { HiSparkles } from "react-icons/hi";
 
@@ -45,6 +45,14 @@ export default function Home() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (prediction.preprocessed === "") {
+      toast.error("Silahkan coba lagi dengan teks ulasan yang berbeda");
+    } else {
+      toast.success("Klasifikasi berhasil");
+    }
+  }, [prediction]);
 
   return (
     <>
@@ -108,7 +116,7 @@ export default function Home() {
           </form>
 
           {/* Prediction */}
-          {prediction.sentimen !== "" && prediction.aspek !== "" && (
+          {prediction.preprocessed !== "" && (
             <>
               <Flex
                 mt="6"
