@@ -1,18 +1,11 @@
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  FormControl,
-  Heading,
-  Text,
-  Textarea,
-} from "@chakra-ui/react";
+import Brand from "@/components/Brand";
+import PredictForm from "@/components/PredictForm";
+import Predictions from "@/components/Predictions";
+import { Container } from "@chakra-ui/react";
 import axios from "axios";
 import Head from "next/head";
 import { FormEvent, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
-import { HiSparkles } from "react-icons/hi";
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -58,14 +51,14 @@ export default function Home() {
         <meta
           name="description"
           content="Analisis sentimen adalah proses menganalisis teks digital untuk
-              menentukan apakah nada emosional pesan tersebut positif atau
-              negatif. Saat ini, perusahaan memiliki data teks dalam volume
-              besar seperti email, transkrip obrolan dukungan pelanggan,
-              komentar media sosial, dan ulasan."
+          menentukan apakah nada emosional pesan tersebut positif atau negatif.
+          Website ini berfungsi sebagai alat untuk mensimulasikan proses analisis
+          sentimen terhadap ulasan pengguna aplikasi MyPertamina."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <main>
         <Toaster />
         <Container
@@ -74,83 +67,20 @@ export default function Home() {
           mb={{ base: "8", md: "12" }}
           px={{ base: "8", lg: "0" }}
         >
-          <Flex flexDirection="column">
-            <Heading as="h1" size={{ base: "lg", md: "xl" }}>
-              Simulasi Sentimen Analisis 🚀
-            </Heading>
-            <Text mt="2">
-              Analisis sentimen adalah proses menganalisis teks digital untuk
-              menentukan apakah nada emosional pesan tersebut positif atau
-              negatif. Saat ini, perusahaan memiliki data teks dalam volume
-              besar seperti email, transkrip obrolan dukungan pelanggan,
-              komentar media sosial, dan ulasan.
-            </Text>
-          </Flex>
+          {/* Brand Name and Desc */}
+          <Brand />
 
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <FormControl>
-              <Box mt={{ base: "6", md: "8" }}>
-                <Textarea
-                  placeholder="Masukkan teks ulasan di sini"
-                  value={text}
-                  onChange={(e) => setText(e.target.value)}
-                />
-              </Box>
-
-              {/* Button loading or not */}
-              <Button
-                leftIcon={<HiSparkles />}
-                colorScheme="blue"
-                variant="solid"
-                mt="3"
-                type="submit"
-                isLoading={loading}
-                loadingText="Mengklasifikasikan"
-              >
-                Klasifikasikan Ulasan
-              </Button>
-            </FormControl>
-          </form>
+          {/* Form */}
+          <PredictForm
+            handleSubmit={handleSubmit}
+            text={text}
+            setText={setText}
+            loading={loading}
+          />
 
           {/* Prediction */}
           {prediction.preprocessed !== "" && (
-            <>
-              <Flex
-                mt="6"
-                gap={2}
-                flexDirection={{
-                  base: "column",
-                  lg: prediction.preprocessed.length <= 72 ? "row" : "column",
-                }}
-              >
-                <Heading as="h2" size="md">
-                  Preprocessed Text:
-                </Heading>
-                <Text>{prediction.preprocessed}</Text>
-              </Flex>
-
-              <Box
-                p="6"
-                mt="2"
-                bg={prediction.sentimen === "positif" ? "green.500" : "red.500"}
-                color="white"
-                rounded="md"
-              >
-                <Heading as="h2" size="md">
-                  Sentimen dan Aspek:
-                </Heading>
-                <Text>
-                  Teks ulasan di atas termasuk ke dalam sentimen
-                  <Text as="span" fontWeight="bold" ml="1">
-                    {prediction.sentimen}{" "}
-                  </Text>
-                  dan aspek
-                  <Text as="span" fontWeight="bold" ml="1">
-                    {prediction.aspek}
-                  </Text>
-                </Text>
-              </Box>
-            </>
+            <Predictions prediction={prediction} />
           )}
         </Container>
       </main>
