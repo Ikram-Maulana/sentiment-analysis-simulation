@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import ResultPredict from "@/components/ResultPredict";
 import ResultPrep from "@/components/ResultPrep";
 import Socials from "@/components/Socials";
-import { Box, Container, Text, Textarea } from "@chakra-ui/react";
+import { Box, Container, Textarea } from "@chakra-ui/react";
 import axios from "axios";
 import Head from "next/head";
 import { useState } from "react";
@@ -51,13 +51,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | Simulasi Sentimen Analisis</title>
+        <title>Home | Simulasi Klasifikasi Sentimen</title>
         <meta
           name="description"
-          content="Analisis sentimen adalah proses menganalisis teks digital untuk
-          menentukan apakah nada emosional pesan tersebut positif atau negatif.
-          Website ini berfungsi sebagai alat untuk mensimulasikan proses analisis
-          sentimen terhadap ulasan pengguna aplikasi MyPertamina."
+          content="Website ini berfungsi sebagai alat untuk mensimulasikan proses klasifikasi sentimen terhadap ulasan pengguna aplikasi MyPertamina menggunakan algoritma Support Vector Machine (SVM)."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -65,20 +62,12 @@ export default function Home() {
 
       <main>
         <Toaster />
-        <Container
-          maxW="800px"
-          mt={{ base: "8", md: "12" }}
-          mb={{ base: "8", md: "12" }}
-          px={{ base: "8", lg: "0" }}
-        >
-          {/* Hero section */}
+        <Container maxW="3xl" pt="6" pb="12" px="8">
+          {/* Hero */}
           <section className="hero">
             <Header
-              title="Simulasi Sentimen Analisis 🚀"
-              description="Analisis sentimen adalah proses menganalisis teks digital untuk
-        menentukan apakah nada emosional pesan tersebut positif atau negatif.
-        Website ini berfungsi sebagai alat untuk mensimulasikan proses analisis
-        sentimen terhadap ulasan pengguna aplikasi MyPertamina."
+              title="Simulasi Klasifikasi Sentimen 🚀"
+              description="Website ini berfungsi sebagai alat untuk mensimulasikan proses klasifikasi sentimen terhadap ulasan pengguna aplikasi MyPertamina menggunakan algoritma Support Vector Machine (SVM)."
             />
             <Socials />
           </section>
