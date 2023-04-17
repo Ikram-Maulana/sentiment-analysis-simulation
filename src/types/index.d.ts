@@ -10,9 +10,12 @@ export interface PredictionProps {
   };
 }
 
-export interface PredictFormProps {
+export interface FormProps {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  text: string;
-  setText: (text: string) => void;
-  loading: boolean;
+  children: React.ReactNode;
+}
+
+export interface HeaderProps {
+  title: string;
+  description: string;
 }

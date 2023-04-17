@@ -1,7 +1,7 @@
 import { PredictionProps } from "@/types";
 import { Box, Heading, Text } from "@chakra-ui/react";
 
-export default function PredictBox({ prediction }: PredictionProps) {
+export default function ResultPredict({ prediction }: PredictionProps) {
   return (
     <Box
       p="6"
