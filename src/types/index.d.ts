@@ -28,3 +28,8 @@ export interface GenerateDatasetProps {
   backgroundColors?: string | string[];
   indexAxis?: string;
 }
+
+export interface MetricsCardProps {
+  title: string;
+  value: number | string;
+}

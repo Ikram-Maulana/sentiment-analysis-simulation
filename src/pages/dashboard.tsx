@@ -1,14 +1,13 @@
-import BarChart from "@/components/BarChart";
+import BarChartGrid from "@/components/BarChartGrid";
 import Header from "@/components/Header";
-import PieChart from "@/components/PieChart";
+import MetricsCard from "@/components/MetricsCard";
+import PieChartGrid from "@/components/PieChartGrid";
 import Socials from "@/components/Socials";
-import WordCloud from "@/components/WordCloud";
+import WordCloudGrid from "@/components/WordCloudGrid";
 import { generateDataset, numberWithCommas, toastSelectedTag } from "@/utils";
 import {
-  Box,
   Container,
   Grid,
-  Heading,
   Tab,
   TabList,
   TabPanel,
@@ -438,73 +437,22 @@ export default function Dashboard({ metrics }: any) {
               gap="4"
               mt="4"
             >
-              <Box
-                px="4"
-                py="3"
-                display="flex"
-                flexDirection="column"
-                gap="2"
-                borderRadius="md"
-                border="1px"
-              >
-                <Box as="p" fontSize="md">
-                  Total Ulasan 💌
-                </Box>
-                <Heading as="h2" size={{ base: "md", md: "lg" }}>
-                  {numberWithCommas(metrics.total_data)}
-                </Heading>
-              </Box>
-
-              <Box
-                px="4"
-                py="3"
-                display="flex"
-                flexDirection="column"
-                gap="2"
-                borderRadius="md"
-                border="1px"
-              >
-                <Box as="p" fontSize="md">
-                  Rating Aplikasi ⭐
-                </Box>
-                <Heading as="h2" size={{ base: "md", md: "lg" }}>
-                  {metrics.rating_average}
-                </Heading>
-              </Box>
-
-              <Box
-                px="4"
-                py="3"
-                display="flex"
-                flexDirection="column"
-                gap="2"
-                borderRadius="md"
-                border="1px"
-              >
-                <Box as="p" fontSize="md">
-                  Kategori Sentimen 😁
-                </Box>
-                <Heading as="h2" size={{ base: "md", md: "lg" }}>
-                  {metrics.kategori_sentimen}
-                </Heading>
-              </Box>
-
-              <Box
-                px="4"
-                py="3"
-                display="flex"
-                flexDirection="column"
-                gap="2"
-                borderRadius="md"
-                border="1px"
-              >
-                <Box as="p" fontSize="md">
-                  Kategori Aspek 🧩
-                </Box>
-                <Heading as="h2" size={{ base: "md", md: "lg" }}>
-                  {metrics.kategori_aspek}
-                </Heading>
-              </Box>
+              <MetricsCard
+                title="Total Ulasan 💌"
+                value={numberWithCommas(metrics.total_data)}
+              />
+              <MetricsCard
+                title="Rating Aplikasi ⭐"
+                value={metrics.rating_average}
+              />
+              <MetricsCard
+                title="Kategori Sentimen 😁"
+                value={metrics.kategori_sentimen}
+              />
+              <MetricsCard
+                title="Kategori Aspek 🧩"
+                value={metrics.kategori_aspek}
+              />
             </Grid>
           </section>
 
@@ -527,98 +475,23 @@ export default function Dashboard({ metrics }: any) {
                     gap="4"
                     mt="8"
                   >
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Sentimen
-                      </Box>
-                      <PieChart chartData={posnegData} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Aspek
-                      </Box>
-                      <PieChart chartData={aspekData} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Ulasan (Bulan)
-                      </Box>
-                      <BarChart chartData={ulasanData} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Sentimen (Bulan)
-                      </Box>
-                      <BarChart chartData={sentimentDataPerMonth} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Aspek (Bulan)
-                      </Box>
-                      <BarChart chartData={aspekDataPerMonth} />
-                    </Box>
+                    <PieChartGrid
+                      title="Jumlah Sentimen"
+                      chartData={posnegData}
+                    />
+                    <PieChartGrid title="Jumlah Aspek" chartData={aspekData} />
+                    <BarChartGrid
+                      title="Jumlah Ulasan (Bulan)"
+                      chartData={ulasanData}
+                    />
+                    <BarChartGrid
+                      title="Jumlah Sentimen (Bulan)"
+                      chartData={sentimentDataPerMonth}
+                    />
+                    <BarChartGrid
+                      title="Jumlah Aspek (Bulan)"
+                      chartData={aspekDataPerMonth}
+                    />
                   </Grid>
                 </TabPanel>
                 <TabPanel p="0">
@@ -630,142 +503,33 @@ export default function Dashboard({ metrics }: any) {
                     gap="4"
                     mt="8"
                   >
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Sentimen
-                      </Box>
-                      <PieChart chartData={bugPosnegData} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Rating
-                      </Box>
-                      <PieChart chartData={bugRating} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Sentimen (Bulan)
-                      </Box>
-                      <BarChart chartData={sentimentDataBugPerMonth} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        15 Ulasan Teratas (Positif)
-                      </Box>
-                      <BarChart chartData={fifteenMostCommonBugWordsPos} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Wordcloud (Positif)
-                      </Box>
-                      <WordCloud
-                        tags={wordcloudBugPos}
-                        toastSelectedTag={toastSelectedTag}
-                      />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        15 Ulasan Teratas (Negatif)
-                      </Box>
-                      <BarChart chartData={fifteenMostCommonBugWordsNeg} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Wordcloud (Negatif)
-                      </Box>
-                      <WordCloud
-                        tags={wordcloudBugNeg}
-                        toastSelectedTag={toastSelectedTag}
-                      />
-                    </Box>
+                    <PieChartGrid
+                      title="Jumlah Sentimen"
+                      chartData={bugPosnegData}
+                    />
+                    <PieChartGrid title="Jumlah Rating" chartData={bugRating} />
+                    <BarChartGrid
+                      title="Jumlah Sentimen (Bulan)"
+                      chartData={sentimentDataBugPerMonth}
+                    />
+                    <BarChartGrid
+                      title="15 Ulasan Teratas (Positif)"
+                      chartData={fifteenMostCommonBugWordsPos}
+                    />
+                    <WordCloudGrid
+                      title="Wordcloud (Positif)"
+                      tags={wordcloudBugPos}
+                      toastSelectedTag={toastSelectedTag}
+                    />
+                    <BarChartGrid
+                      title="15 Ulasan Teratas (Negatif)"
+                      chartData={fifteenMostCommonBugWordsNeg}
+                    />
+                    <WordCloudGrid
+                      title="Wordcloud (Negatif)"
+                      tags={wordcloudBugNeg}
+                      toastSelectedTag={toastSelectedTag}
+                    />
                   </Grid>
                 </TabPanel>
                 <TabPanel p="0">
@@ -777,142 +541,36 @@ export default function Dashboard({ metrics }: any) {
                     gap="4"
                     mt="8"
                   >
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Sentimen
-                      </Box>
-                      <PieChart chartData={kegunaanPosnegData} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Rating
-                      </Box>
-                      <PieChart chartData={kegunaanRating} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Sentimen (Bulan)
-                      </Box>
-                      <BarChart chartData={sentimentDataKegunaanPerMonth} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        15 Ulasan Teratas (Positif)
-                      </Box>
-                      <BarChart chartData={fifteenMostCommonKegunaanWordsPos} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Wordcloud (Positif)
-                      </Box>
-                      <WordCloud
-                        tags={wordcloudKegunaanPos}
-                        toastSelectedTag={toastSelectedTag}
-                      />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        15 Ulasan Teratas (Negatif)
-                      </Box>
-                      <BarChart chartData={fifteenMostCommonKegunaanWordsNeg} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Wordcloud (Negatif)
-                      </Box>
-                      <WordCloud
-                        tags={wordcloudKegunaanNeg}
-                        toastSelectedTag={toastSelectedTag}
-                      />
-                    </Box>
+                    <PieChartGrid
+                      title="Jumlah Sentimen"
+                      chartData={kegunaanPosnegData}
+                    />
+                    <PieChartGrid
+                      title="Jumlah Rating"
+                      chartData={kegunaanRating}
+                    />
+                    <BarChartGrid
+                      title="Jumlah Sentimen (Bulan)"
+                      chartData={sentimentDataKegunaanPerMonth}
+                    />
+                    <BarChartGrid
+                      title="15 Ulasan Teratas (Positif)"
+                      chartData={fifteenMostCommonKegunaanWordsPos}
+                    />
+                    <WordCloudGrid
+                      title="Wordcloud (Positif)"
+                      tags={wordcloudKegunaanPos}
+                      toastSelectedTag={toastSelectedTag}
+                    />
+                    <BarChartGrid
+                      title="15 Ulasan Teratas (Negatif)"
+                      chartData={fifteenMostCommonKegunaanWordsNeg}
+                    />
+                    <WordCloudGrid
+                      title="Wordcloud (Negatif)"
+                      tags={wordcloudKegunaanNeg}
+                      toastSelectedTag={toastSelectedTag}
+                    />
                   </Grid>
                 </TabPanel>
                 <TabPanel p="0">
@@ -924,146 +582,36 @@ export default function Dashboard({ metrics }: any) {
                     gap="4"
                     mt="8"
                   >
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Sentimen
-                      </Box>
-                      <PieChart chartData={pembayaranPosnegData} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Rating
-                      </Box>
-                      <PieChart chartData={pembayaranRating} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Jumlah Sentimen (Bulan)
-                      </Box>
-                      <BarChart chartData={sentimentDataPembayaranPerMonth} />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        15 Ulasan Teratas (Positif)
-                      </Box>
-                      <BarChart
-                        chartData={fifteenMostCommonPembayaranWordsPos}
-                      />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Wordcloud (Positif)
-                      </Box>
-                      <WordCloud
-                        tags={wordcloudPembayaranPos}
-                        toastSelectedTag={toastSelectedTag}
-                      />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        15 Ulasan Teratas (Negatif)
-                      </Box>
-                      <BarChart
-                        chartData={fifteenMostCommonPembayaranWordsNeg}
-                      />
-                    </Box>
-
-                    <Box
-                      px="4"
-                      py="3"
-                      minW="256px"
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="2"
-                      borderRadius="md"
-                      border="1px"
-                      gridColumn={{ base: "1 / 2", md: "1 / 3" }}
-                    >
-                      <Box as="p" fontSize="md" fontWeight="bold">
-                        Wordcloud (Negatif)
-                      </Box>
-                      <WordCloud
-                        tags={wordcloudPembayaranNeg}
-                        toastSelectedTag={toastSelectedTag}
-                      />
-                    </Box>
+                    <PieChartGrid
+                      title="Jumlah Sentimen"
+                      chartData={pembayaranPosnegData}
+                    />
+                    <PieChartGrid
+                      title="Jumlah Rating"
+                      chartData={pembayaranRating}
+                    />
+                    <BarChartGrid
+                      title="Jumlah Sentimen (Bulan)"
+                      chartData={sentimentDataPembayaranPerMonth}
+                    />
+                    <BarChartGrid
+                      title="15 Ulasan Teratas (Positif)"
+                      chartData={fifteenMostCommonPembayaranWordsPos}
+                    />
+                    <WordCloudGrid
+                      title="Wordcloud (Positif)"
+                      tags={wordcloudPembayaranPos}
+                      toastSelectedTag={toastSelectedTag}
+                    />
+                    <BarChartGrid
+                      title="15 Ulasan Teratas (Negatif)"
+                      chartData={fifteenMostCommonPembayaranWordsNeg}
+                    />
+                    <WordCloudGrid
+                      title="Wordcloud (Negatif)"
+                      tags={wordcloudPembayaranNeg}
+                      toastSelectedTag={toastSelectedTag}
+                    />
                   </Grid>
                 </TabPanel>
               </TabPanels>
