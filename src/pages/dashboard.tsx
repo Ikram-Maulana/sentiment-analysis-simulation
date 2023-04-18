@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import PieChart from "@/components/PieChart";
 import Socials from "@/components/Socials";
 import WordCloud from "@/components/WordCloud";
+import { generateDataset, numberWithCommas, toastSelectedTag } from "@/utils";
 import {
   Box,
   Container,
@@ -17,7 +18,7 @@ import {
 import axios from "axios";
 import Head from "next/head";
 import { useState } from "react";
-import { Toaster, toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 export async function getStaticProps() {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/metrics`);
@@ -35,99 +36,86 @@ export default function Dashboard({ metrics }: any) {
   const [posnegData] = useState({
     labels: metrics.all.total_posneg.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Total Sentimen",
         data: metrics.all.total_posneg.map((item: any) => item.y),
-        backgroundColor: ["#00B894", "#D63031"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        parsing: null,
+        backgroundColors: ["#00B894", "#D63031"],
+      }),
     ],
   });
   const [aspekData] = useState({
     labels: metrics.all.total_aspek.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Total Aspek",
         data: metrics.all.total_aspek.map((item: any) => item.y),
-        backgroundColor: ["#D63031", "#0984e3", "#fdcb6e"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        parsing: null,
+        backgroundColors: ["#D63031", "#0984e3", "#fdcb6e"],
+      }),
     ],
   });
   const [ulasanData] = useState({
     labels: metrics.all.total_ulasan_per_month.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Total Ulasan",
         data: metrics.all.total_ulasan_per_month.map((item: any) => item.y),
-        backgroundColor: ["#0984e3"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        parsing: null,
+        backgroundColors: ["#0984e3"],
+      }),
     ],
   });
   const sentimentDataByMonth = metrics.all.total_sentiment_per_month;
   const [sentimentDataPerMonth] = useState({
     labels: sentimentDataByMonth.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Positif",
         data: sentimentDataByMonth,
         parsing: {
           yAxisKey: "positif",
         },
-        backgroundColor: "#00B894",
-        borderColor: "black",
-        borderWidth: 2,
-      },
-      {
+        backgroundColors: "#00B894",
+      }),
+      generateDataset({
         label: "Negatif",
         data: sentimentDataByMonth,
         parsing: {
           yAxisKey: "negatif",
         },
-        backgroundColor: "#D63031",
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        backgroundColors: "#D63031",
+      }),
     ],
   });
   const aspekDataByMonth = metrics.all.total_aspek_per_month;
   const [aspekDataPerMonth] = useState({
     labels: aspekDataByMonth.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Bug",
         data: aspekDataByMonth,
         parsing: {
           yAxisKey: "bug",
         },
-        backgroundColor: "#D63031",
-        borderColor: "black",
-        borderWidth: 2,
-      },
-      {
+        backgroundColors: "#D63031",
+      }),
+      generateDataset({
         label: "Kegunaan",
         data: aspekDataByMonth,
         parsing: {
           yAxisKey: "kegunaan",
         },
-        backgroundColor: "#0984e3",
-        borderColor: "black",
-        borderWidth: 2,
-      },
-      {
+        backgroundColors: "#0984e3",
+      }),
+      generateDataset({
         label: "Pembayaran",
         data: aspekDataByMonth,
         parsing: {
           yAxisKey: "pembayaran",
         },
-        backgroundColor: "#fdcb6e",
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        backgroundColors: "#fdcb6e",
+      }),
     ],
   });
 
@@ -135,67 +123,60 @@ export default function Dashboard({ metrics }: any) {
   const [bugPosnegData] = useState({
     labels: metrics.bug.total_posneg.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Total Sentimen",
         data: metrics.bug.total_posneg.map((item: any) => item.y),
-        backgroundColor: ["#D63031", "#00B894"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        parsing: null,
+        backgroundColors: ["#D63031", "#00B894"],
+      }),
     ],
   });
   const [bugRating] = useState({
     labels: metrics.bug.total_rating.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Total Rating",
         data: metrics.bug.total_rating.map((item: any) => item.y),
-        backgroundColor: ["#D63031", "#F39C12", "#0984e3", "#2ECC71"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        parsing: null,
+        backgroundColors: ["#D63031", "#F39C12", "#0984e3", "#2ECC71"],
+      }),
     ],
   });
   const sentimentDataBugByMonth = metrics.bug.posneg_per_month;
   const [sentimentDataBugPerMonth] = useState({
     labels: sentimentDataBugByMonth.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Positif",
         data: sentimentDataBugByMonth,
         parsing: {
           yAxisKey: "positif",
         },
-        backgroundColor: "#00B894",
-        borderColor: "black",
-        borderWidth: 2,
-      },
-      {
+        backgroundColors: "#00B894",
+      }),
+      generateDataset({
         label: "Negatif",
         data: sentimentDataBugByMonth,
         parsing: {
           yAxisKey: "negatif",
         },
-        backgroundColor: "#D63031",
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        backgroundColors: "#D63031",
+      }),
     ],
   });
   const [fifteenMostCommonBugWordsPos] = useState({
     type: "horizontalBar",
     labels: metrics.bug.fifteen_most_common_pos.map((item: any) => item.word),
     datasets: [
-      {
+      generateDataset({
         label: "Frekuensi",
         data: metrics.bug.fifteen_most_common_pos.map(
           (item: any) => item.value
         ),
-        backgroundColor: "#00B894",
-        borderColor: "black",
-        borderWidth: 2,
+        parsing: null,
+        backgroundColors: "#00B894",
         indexAxis: "y",
-      },
+      }),
     ],
   });
   const [wordcloudBugPos] = useState(
@@ -210,16 +191,15 @@ export default function Dashboard({ metrics }: any) {
     type: "horizontalBar",
     labels: metrics.bug.fifteen_most_common_neg.map((item: any) => item.word),
     datasets: [
-      {
+      generateDataset({
         label: "Frekuensi",
         data: metrics.bug.fifteen_most_common_neg.map(
           (item: any) => item.value
         ),
-        backgroundColor: "#D63031",
-        borderColor: "black",
-        borderWidth: 2,
+        parsing: null,
+        backgroundColors: "#D63031",
         indexAxis: "y",
-      },
+      }),
     ],
   });
   const [wordcloudBugNeg] = useState(
@@ -235,51 +215,45 @@ export default function Dashboard({ metrics }: any) {
   const [kegunaanPosnegData] = useState({
     labels: metrics.kegunaan.total_posneg.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Total Sentimen",
         data: metrics.kegunaan.total_posneg.map((item: any) => item.y),
-        backgroundColor: ["#D63031", "#00B894"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        parsing: null,
+        backgroundColors: ["#D63031", "#00B894"],
+      }),
     ],
   });
   const [kegunaanRating] = useState({
     labels: metrics.kegunaan.total_rating.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Total Rating",
         data: metrics.kegunaan.total_rating.map((item: any) => item.y),
-        backgroundColor: ["#D63031", "#F39C12", "#0984e3", "#2ECC71"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        parsing: null,
+        backgroundColors: ["#D63031", "#F39C12", "#0984e3", "#2ECC71"],
+      }),
     ],
   });
   const sentimentDataKegunaanByMonth = metrics.kegunaan.posneg_per_month;
   const [sentimentDataKegunaanPerMonth] = useState({
     labels: sentimentDataKegunaanByMonth.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Positif",
         data: sentimentDataKegunaanByMonth,
         parsing: {
           yAxisKey: "positif",
         },
-        backgroundColor: "#00B894",
-        borderColor: "black",
-        borderWidth: 2,
-      },
-      {
+        backgroundColors: "#00B894",
+      }),
+      generateDataset({
         label: "Negatif",
         data: sentimentDataKegunaanByMonth,
         parsing: {
           yAxisKey: "negatif",
         },
-        backgroundColor: "#D63031",
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        backgroundColors: "#D63031",
+      }),
     ],
   });
   const [fifteenMostCommonKegunaanWordsPos] = useState({
@@ -288,16 +262,15 @@ export default function Dashboard({ metrics }: any) {
       (item: any) => item.word
     ),
     datasets: [
-      {
+      generateDataset({
         label: "Frekuensi",
         data: metrics.kegunaan.fifteen_most_common_pos.map(
           (item: any) => item.value
         ),
-        backgroundColor: "#00B894",
-        borderColor: "black",
-        borderWidth: 2,
+        parsing: null,
+        backgroundColors: "#00B894",
         indexAxis: "y",
-      },
+      }),
     ],
   });
   const [wordcloudKegunaanPos] = useState(
@@ -314,16 +287,15 @@ export default function Dashboard({ metrics }: any) {
       (item: any) => item.word
     ),
     datasets: [
-      {
+      generateDataset({
         label: "Frekuensi",
         data: metrics.kegunaan.fifteen_most_common_neg.map(
           (item: any) => item.value
         ),
-        backgroundColor: "#D63031",
-        borderColor: "black",
-        borderWidth: 2,
+        parsing: null,
+        backgroundColors: "#D63031",
         indexAxis: "y",
-      },
+      }),
     ],
   });
   const [wordcloudKegunaanNeg] = useState(
@@ -339,51 +311,45 @@ export default function Dashboard({ metrics }: any) {
   const [pembayaranPosnegData] = useState({
     labels: metrics.pembayaran.total_posneg.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Total Sentimen",
         data: metrics.pembayaran.total_posneg.map((item: any) => item.y),
-        backgroundColor: ["#D63031", "#00B894"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        parsing: null,
+        backgroundColors: ["#D63031", "#00B894"],
+      }),
     ],
   });
   const [pembayaranRating] = useState({
     labels: metrics.pembayaran.total_rating.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Total Rating",
         data: metrics.pembayaran.total_rating.map((item: any) => item.y),
-        backgroundColor: ["#D63031", "#F39C12", "#0984e3", "#2ECC71"],
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        parsing: null,
+        backgroundColors: ["#D63031", "#F39C12", "#0984e3", "#2ECC71"],
+      }),
     ],
   });
   const sentimentDataPembayaranByMonth = metrics.pembayaran.posneg_per_month;
   const [sentimentDataPembayaranPerMonth] = useState({
     labels: sentimentDataPembayaranByMonth.map((item: any) => item.x),
     datasets: [
-      {
+      generateDataset({
         label: "Positif",
         data: sentimentDataPembayaranByMonth,
         parsing: {
           yAxisKey: "positif",
         },
-        backgroundColor: "#00B894",
-        borderColor: "black",
-        borderWidth: 2,
-      },
-      {
+        backgroundColors: "#00B894",
+      }),
+      generateDataset({
         label: "Negatif",
         data: sentimentDataPembayaranByMonth,
         parsing: {
           yAxisKey: "negatif",
         },
-        backgroundColor: "#D63031",
-        borderColor: "black",
-        borderWidth: 2,
-      },
+        backgroundColors: "#D63031",
+      }),
     ],
   });
   const [fifteenMostCommonPembayaranWordsPos] = useState({
@@ -392,16 +358,15 @@ export default function Dashboard({ metrics }: any) {
       (item: any) => item.word
     ),
     datasets: [
-      {
+      generateDataset({
         label: "Frekuensi",
         data: metrics.pembayaran.fifteen_most_common_pos.map(
           (item: any) => item.value
         ),
-        backgroundColor: "#00B894",
-        borderColor: "black",
-        borderWidth: 2,
+        parsing: null,
+        backgroundColors: "#00B894",
         indexAxis: "y",
-      },
+      }),
     ],
   });
   const [wordcloudPembayaranPos] = useState(
@@ -418,16 +383,15 @@ export default function Dashboard({ metrics }: any) {
       (item: any) => item.word
     ),
     datasets: [
-      {
+      generateDataset({
         label: "Frekuensi",
         data: metrics.pembayaran.fifteen_most_common_neg.map(
           (item: any) => item.value
         ),
-        backgroundColor: "#D63031",
-        borderColor: "black",
-        borderWidth: 2,
+        parsing: null,
+        backgroundColors: "#D63031",
         indexAxis: "y",
-      },
+      }),
     ],
   });
   const [wordcloudPembayaranNeg] = useState(
@@ -438,14 +402,6 @@ export default function Dashboard({ metrics }: any) {
       };
     })
   );
-
-  const toastSelectedTag = (tag: string) => {
-    toast.success(`Kata "${tag}" telah dipilih!`);
-  };
-
-  let numberWithCommas = (x: any) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
 
   return (
     <>

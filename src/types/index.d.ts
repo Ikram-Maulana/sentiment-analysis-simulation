@@ -20,3 +20,11 @@ export interface HeaderProps {
   spotlight?: string;
   description: string;
 }
+
+export interface GenerateDatasetProps {
+  label: string;
+  data: any;
+  parsing?: null | { yAxisKey: string };
+  backgroundColors?: string | string[];
+  indexAxis?: string;
+}
