@@ -67,7 +67,7 @@ export default function Home() {
           <section className="hero">
             <Header
               title="Simulasi Klasifikasi Sentimen 🚀"
-              description="Website ini berfungsi sebagai alat untuk mensimulasikan proses klasifikasi sentimen terhadap ulasan pengguna aplikasi MyPertamina menggunakan algoritma Support Vector Machine (SVM)."
+              description="Halaman ini berfungsi untuk mensimulasikan proses klasifikasi sentimen terhadap ulasan pengguna aplikasi MyPertamina menggunakan algoritma Support Vector Machine (SVM)."
             />
             <Socials />
           </section>
