@@ -17,5 +17,6 @@ export interface FormProps {
 
 export interface HeaderProps {
   title: string;
+  spotlight?: string;
   description: string;
 }
