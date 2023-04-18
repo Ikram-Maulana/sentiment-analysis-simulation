@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import data from "../data.json";
 
-export default function SocialList() {
+export default function Socials() {
   return (
     <Flex mt="4" alignItems="center" gap={2}>
       {data.map((item) => (

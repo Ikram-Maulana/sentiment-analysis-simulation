@@ -1,7 +1,7 @@
 import { PredictionProps } from "@/types";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 
-export default function PrepBox({ prediction }: PredictionProps) {
+export default function ResultPrep({ prediction }: PredictionProps) {
   return (
     <Flex
       mt="6"

@@ -1,14 +1,16 @@
-import Brand from "@/components/Brand";
-import PredictForm from "@/components/PredictForm";
-import Predictions from "@/components/Predictions";
-import { Container } from "@chakra-ui/react";
+import Buttons from "@/components/Buttons";
+import Form from "@/components/Form";
+import Header from "@/components/Header";
+import ResultPredict from "@/components/ResultPredict";
+import ResultPrep from "@/components/ResultPrep";
+import Socials from "@/components/Socials";
+import { Box, Container, Textarea } from "@chakra-ui/react";
 import axios from "axios";
 import Head from "next/head";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 export default function Home() {
-  const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [prediction, setPrediction] = useState({
     aspek: "",
@@ -16,8 +18,10 @@ export default function Home() {
     sentimen: "",
   });
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+    let text = e.currentTarget[0].value;
+
     if (text === "") {
       toast.error("Teks ulasan tidak boleh kosong");
       return;
@@ -47,13 +51,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | Simulasi Sentimen Analisis</title>
+        <title>Home | Simulasi Klasifikasi Sentimen</title>
         <meta
           name="description"
-          content="Analisis sentimen adalah proses menganalisis teks digital untuk
-          menentukan apakah nada emosional pesan tersebut positif atau negatif.
-          Website ini berfungsi sebagai alat untuk mensimulasikan proses analisis
-          sentimen terhadap ulasan pengguna aplikasi MyPertamina."
+          content="Website ini berfungsi sebagai alat untuk mensimulasikan proses klasifikasi sentimen terhadap ulasan pengguna aplikasi MyPertamina menggunakan algoritma Support Vector Machine (SVM)."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -61,27 +62,36 @@ export default function Home() {
 
       <main>
         <Toaster />
-        <Container
-          maxW="800px"
-          mt={{ base: "8", md: "12" }}
-          mb={{ base: "8", md: "12" }}
-          px={{ base: "8", lg: "0" }}
-        >
-          {/* Brand Name and Desc */}
-          <Brand />
+        <Container maxW="3xl" pt="6" pb="12" px="8">
+          {/* Hero */}
+          <section className="hero">
+            <Header
+              title="Simulasi Klasifikasi Sentimen 🚀"
+              description="Halaman ini berfungsi untuk mensimulasikan proses klasifikasi sentimen terhadap ulasan pengguna aplikasi MyPertamina menggunakan algoritma Support Vector Machine (SVM)."
+            />
+            <Socials />
+          </section>
 
           {/* Form */}
-          <PredictForm
-            handleSubmit={handleSubmit}
-            text={text}
-            setText={setText}
-            loading={loading}
-          />
+          <section className="form-input">
+            <Form handleSubmit={handleSubmit}>
+              <Box mt="4">
+                <Textarea placeholder="Masukkan teks ulasan di sini" />
+              </Box>
 
-          {/* Prediction */}
-          {prediction.preprocessed !== "" && (
-            <Predictions prediction={prediction} />
-          )}
+              <Buttons loading={loading} />
+            </Form>
+          </section>
+
+          {/* Result */}
+          <section className="result">
+            {prediction.preprocessed !== "" && (
+              <>
+                <ResultPrep prediction={prediction} />
+                <ResultPredict prediction={prediction} />
+              </>
+            )}
+          </section>
         </Container>
       </main>
     </>
