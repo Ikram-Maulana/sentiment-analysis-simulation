@@ -1,4 +1,5 @@
 import { montserrat, poppins } from "@/assets/fonts";
+import Navbar from "@/components/navbar";
 import "@/styles/globals.css";
 
 export const metadata = {
@@ -51,7 +52,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${poppins.variable}`}>
-      <body className="overflow-y-scroll bg-old-500">{children}</body>
+      <body className="overflow-y-scroll bg-old-500">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

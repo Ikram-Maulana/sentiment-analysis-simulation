@@ -22,7 +22,11 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/assets/*": ["./src/assets/*"],
-      "@/styles/*": ["./src/styles/*"]
+      "@/styles/*": ["./src/styles/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/ui/*": ["./src/components/ui/*"],
+      "@/database/*": ["./src/database/*"],
+      "@/types/*": ["./src/types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
