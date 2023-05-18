@@ -52,7 +52,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${poppins.variable}`}>
-      <body className="overflow-y-scroll bg-old-500">
+      <body className="overflow-y-scroll bg-old-500 text-tprimary">
         <Navbar />
         {children}
       </body>

@@ -20,6 +20,7 @@ module.exports = {
     extend: {
       colors: {
         ...Tokens.colors,
+        tprimary: "#1A1B1F",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

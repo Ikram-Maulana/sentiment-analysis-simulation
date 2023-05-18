@@ -37,7 +37,7 @@ export default function Navbar() {
                   className={`${buttonVariants({
                     variant: isActive ? "secondary" : "ghost",
                     size: "sm",
-                  })} ${isActive ? cn("navActive") : null}`}
+                  })} ${cn("font-semibold")}`}
                 >
                   {item.title}
                 </Link>
