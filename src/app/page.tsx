@@ -32,11 +32,17 @@ export default function Home() {
 
         <Tabs defaultValue="text" className="mt-4 lg:mt-2">
           <TabsList className="grid max-w-[300px] grid-cols-2 gap-4 mb-8 lg:mb-6">
-            <TabsTrigger value="text" className="flex gap-2">
+            <TabsTrigger
+              value="text"
+              className="flex gap-2 font-semibold lg:text-xs"
+            >
               <BotIcon />
               Text
             </TabsTrigger>
-            <TabsTrigger value="documents" className="flex gap-2">
+            <TabsTrigger
+              value="documents"
+              className="flex gap-2 font-semibold lg:text-xs"
+            >
               <FileTextIcon />
               Documents
             </TabsTrigger>
@@ -46,7 +52,7 @@ export default function Home() {
               <Textarea placeholder="Enter review text here" />
               <Button
                 type="submit"
-                className="mt-4 font-semibold bg-fire-500 hover:bg-fire-600"
+                className="mt-4 bg-fire-500 hover:bg-fire-600"
               >
                 <SparklesIcon className="w-4 h-4 mr-2" /> Classify Reviews
               </Button>
@@ -55,13 +61,13 @@ export default function Home() {
           <TabsContent value="documents">
             <form>
               <Input id="file-reviews" type="file" />
-              <p className="mt-2 text-sm text-muted-foreground">
-                The File Must Have the XLSX Type According to the Template and a
-                Maximum of 100 Review Lines.
+              <p className="mt-2 lg:text-xs text-muted-foreground">
+                * The File Must Have the XLSX Type According to the Template and
+                a Maximum of 100 Review Lines.
               </p>
               <Button
                 type="submit"
-                className="mt-4 font-semibold bg-fire-500 hover:bg-fire-600"
+                className="mt-4 bg-fire-500 hover:bg-fire-600"
               >
                 <SparklesIcon className="w-4 h-4 mr-2" /> Classify Reviews
               </Button>

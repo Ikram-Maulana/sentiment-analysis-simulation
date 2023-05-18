@@ -38,7 +38,7 @@ export default function Navbar() {
                     ? "secondary"
                     : "ghost",
                   size: "sm",
-                })} ${cn("font-semibold")}`}
+                })} ${"lg:text-xs font-semibold"}`}
               >
                 {item.title}
               </Link>

@@ -81,9 +81,6 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-  .navActive {
-    @apply font-bold !important;
-  }
   /* For all browser */
   html::-webkit-scrollbar {
     @apply w-2 border border-black;
