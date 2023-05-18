@@ -2,7 +2,6 @@ import { montserrat, poppins } from "@/assets/fonts";
 import "@/styles/globals.css";
 
 export const metadata = {
-  title: "Aspect Based Sentiment Classification Simulation",
   description:
     "This website serves as a tool to simulate the sentiment classification process and aspects of user reviews of the MyPertamina application using the Support Vector Machine (SVM) algorithm.",
   applicationName: "Aspect Based Sentiment Classification Simulation",
