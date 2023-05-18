@@ -1,7 +1,7 @@
 {
 	"primitives": {
 		"colors": {
-			"primary": {
+			"bone": {
 				"50": {
 					"id": "de18af5a-91e4-4233-a13d-f6771d8b5481",
 					"value": "#ffffff",
@@ -58,7 +58,7 @@
 					"type": "color"
 				}
 			},
-			"base": {
+			"old": {
 				"50": {
 					"id": "d8e2aad7-405f-4834-8e54-9aec962165cd",
 					"value": "#ffffff",
@@ -115,7 +115,7 @@
 					"type": "color"
 				}
 			},
-			"secondary": {
+			"fire": {
 				"50": {
 					"id": "0c2ac11e-16d4-4b3d-8b98-cbc64962ba31",
 					"value": "#fdeded",
@@ -172,7 +172,7 @@
 					"type": "color"
 				}
 			},
-			"accent": {
+			"cool": {
 				"50": {
 					"id": "b584ada1-7e76-4079-ad52-9c37873a6d91",
 					"value": "#077cff",
@@ -239,7 +239,12 @@
 	},
 	"themes": [],
 	"files": [
-		"cjs"
+		"cjs",
+		"js",
+		"scss",
+		"css",
+		"ts",
+		"json"
 	],
 	"__internal__": {
 		"migrations": {

@@ -1,4 +1,4 @@
-exports.Tokens = {
+export const Tokens = {
   colors: {
     bone: {
       '50': '#ffffff',

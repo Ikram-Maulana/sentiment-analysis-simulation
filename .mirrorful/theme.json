@@ -1,4 +1,4 @@
-exports.Tokens = {
+{
   colors: {
     bone: {
       '50': '#ffffff',
