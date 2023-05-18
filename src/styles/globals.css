@@ -74,8 +74,29 @@
   * {
     @apply border-border;
   }
+  html {
+    @apply font-poppins;
+  }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  .navbar-fixed {
+    @apply fixed z-50 bg-white bg-opacity-80 backdrop-blur-sm;
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+  }
+  /* For all browser */
+  html::-webkit-scrollbar {
+    @apply w-2 border border-black;
+  }
+  html::-webkit-scrollbar-track {
+    @apply rounded-md bg-[#f1f1f0];
+  }
+  html::-webkit-scrollbar-thumb {
+    @apply shadow-lg bg-[#eb5455] rounded-xl;
+  }
+  /* For Firefox */
+  html {
+    scrollbar-color: #eb5455 black;
   }
 }

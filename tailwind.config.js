@@ -1,4 +1,5 @@
 const { Tokens } = require("./.mirrorful/theme_cjs.js");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -71,6 +72,10 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)", ...defaultTheme.fontFamily.sans],
+        poppins: ["var(--font-poppins)", ...defaultTheme.fontFamily.sans],
       },
     },
   },
