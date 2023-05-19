@@ -1,4 +1,5 @@
 import MetricsCard from "@/components/metrics-card";
+import MetricsDashboard from "@/components/metrics-dashboard";
 import { numberWithCommas } from "@/lib/utils";
 import { Metadata } from "next";
 
@@ -31,24 +32,29 @@ export default async function Dashboard() {
         </p>
 
         {/* Metrics */}
-        <div className="grid grid-cols-1 gap-4 mt-4 lg:mt-2 md:grid-cols-2">
-          <MetricsCard
-            title="Total Ulasan 💌"
-            value={numberWithCommas(metrics.total_data)}
-          />
-          <MetricsCard
-            title="Rating Aplikasi ⭐"
-            value={metrics.rating_average}
-          />
-          <MetricsCard
-            title="Kategori Sentimen 😁"
-            value={metrics.kategori_sentimen}
-          />
-          <MetricsCard
-            title="Kategori Aspek 🧩"
-            value={metrics.kategori_aspek}
-          />
-        </div>
+        <section id="metrics">
+          <div className="grid grid-cols-1 gap-4 mt-4 lg:mt-2 md:grid-cols-2">
+            <MetricsCard
+              title="Total Ulasan 💌"
+              value={numberWithCommas(metrics.total_data)}
+            />
+            <MetricsCard
+              title="Rating Aplikasi ⭐"
+              value={metrics.rating_average}
+            />
+            <MetricsCard
+              title="Kategori Sentimen 😁"
+              value={metrics.kategori_sentimen}
+            />
+            <MetricsCard
+              title="Kategori Aspek 🧩"
+              value={metrics.kategori_aspek}
+            />
+          </div>
+        </section>
+
+        {/* Charts */}
+        <MetricsDashboard metrics={metrics} />
       </div>
     </main>
   );
