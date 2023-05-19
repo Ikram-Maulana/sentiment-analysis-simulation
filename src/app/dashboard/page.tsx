@@ -33,7 +33,7 @@ export default async function Dashboard() {
 
         {/* Metrics */}
         <section id="metrics">
-          <div className="grid grid-cols-1 gap-4 mt-4 lg:mt-2 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 mt-8 lg:mt-6 md:grid-cols-2">
             <MetricsCard
               title="Total Ulasan 💌"
               value={numberWithCommas(metrics.total_data)}
