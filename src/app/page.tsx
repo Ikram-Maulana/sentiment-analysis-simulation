@@ -22,7 +22,9 @@ export default function Home() {
           documents with the templates provided{" "}
           <Link
             className="underline-offset-4 hover:underline text-primary"
-            href="https://ikram-maulana.tech"
+            href="https://docs.google.com/spreadsheets/d/1CmNkAFItCrsqXDfCsSG-gXYcCpwYjJOG/edit?usp=share_link&ouid=101074035509003337819&rtpof=true&sd=true"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             here
           </Link>
