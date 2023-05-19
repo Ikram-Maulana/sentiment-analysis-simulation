@@ -15,7 +15,7 @@ export default function FormText() {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleTextClassify = (e: any) => {
+  const handleTextClassify = async (e: any) => {
     e.preventDefault();
     const text = e.target[0].value;
     // Client-side validation for text should not null and not have html special characters
@@ -30,7 +30,8 @@ export default function FormText() {
 
     try {
       setIsLoading(true);
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/predict`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/predict`, {
+        cache: "no-store",
         method: "POST",
         headers: {
           "Content-Type": "application/json",

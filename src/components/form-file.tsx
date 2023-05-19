@@ -36,6 +36,7 @@ export default function FormFile() {
       const formData = new FormData();
       formData.append("file", inputFile);
       await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/predict-bulk`, {
+        cache: "no-store",
         method: "POST",
         body: formData,
       })
@@ -43,7 +44,12 @@ export default function FormFile() {
         .then((data) => {
           setResult(data.data);
           setIsLoading(false);
-          toast.success("File classified successfully");
+
+          if (data.data.length === 0) {
+            toast.error("Please try again with a different file");
+          } else {
+            toast.success("File classified successfully");
+          }
         });
     } catch (error) {
       toast.error("Something went wrong");
