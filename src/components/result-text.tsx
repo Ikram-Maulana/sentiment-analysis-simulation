@@ -15,7 +15,11 @@ export default function ResultText({ prediction }: ResultTextProps) {
         </h2>
         <p className="leading-7">{prediction.preprocessed}</p>
       </div>
-      <div className="p-6 text-white rounded-md bg-fire-500">
+      <div
+        className={`p-6 text-white rounded-md ${
+          prediction.sentimen === "positif" ? "bg-emerald-500" : "bg-red-500"
+        }`}
+      >
         <h2 className="text-xl font-extrabold tracking-tight font-montserrat scroll-m-20">
           Sentiment and Aspect:
         </h2>
