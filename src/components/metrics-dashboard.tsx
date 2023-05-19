@@ -527,7 +527,50 @@ export default function MetricsDashboard({ metrics }: any) {
           </div>
         </TabsContent>
         <TabsContent value="pembayaran">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-2"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-2">
+            <ChartCard
+              title="Jumlah Sentimen"
+              value={pembayaranPosnegData}
+              chartType="pie"
+            />
+            <ChartCard
+              title="Jumlah Rating"
+              value={pembayaranRating}
+              chartType="pie"
+            />
+            <ChartCard
+              title="Jumlah Sentimen (Bulan)"
+              value={sentimentDataPembayaranPerMonth}
+              className="md:col-span-2"
+              chartType="bar"
+            />
+            <ChartCard
+              title="15 Ulasan Teratas (Positif)"
+              value={fifteenMostCommonPembayaranWordsPos}
+              className="md:col-span-2"
+              chartType="bar"
+            />
+            <ChartCard
+              title="Wordcloud (Positif)"
+              tags={wordcloudPembayaranPos}
+              toastSelectedTag={toastSelectedTag}
+              className="md:col-span-2"
+              chartType="wordcloud"
+            />
+            <ChartCard
+              title="15 Ulasan Teratas (Negatif)"
+              value={fifteenMostCommonPembayaranWordsNeg}
+              className="md:col-span-2"
+              chartType="bar"
+            />
+            <ChartCard
+              title="Wordcloud (Negatif)"
+              tags={wordcloudPembayaranNeg}
+              toastSelectedTag={toastSelectedTag}
+              className="md:col-span-2"
+              chartType="wordcloud"
+            />
+          </div>
         </TabsContent>
       </Tabs>
     </section>
