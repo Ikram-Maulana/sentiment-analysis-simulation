@@ -1,8 +1,7 @@
-import { Button } from "@/ui/button";
-import { Input } from "@/ui/input";
+import FormFile from "@/components/form-file";
+import FormText from "@/components/form-text";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
-import { Textarea } from "@/ui/textarea";
-import { BotIcon, FileTextIcon, SparklesIcon } from "lucide-react";
+import { BotIcon, FileTextIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -48,30 +47,10 @@ export default function Home() {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="text">
-            <form>
-              <Textarea placeholder="Enter review text here" />
-              <Button
-                type="submit"
-                className="mt-4 bg-fire-500 hover:bg-fire-600"
-              >
-                <SparklesIcon className="w-4 h-4 mr-2" /> Classify Reviews
-              </Button>
-            </form>
+            <FormText />
           </TabsContent>
           <TabsContent value="documents">
-            <form>
-              <Input id="file-reviews" type="file" />
-              <p className="mt-2 lg:text-xs text-muted-foreground">
-                * The File Must Have the XLSX Type According to the Template and
-                a Maximum of 100 Review Lines.
-              </p>
-              <Button
-                type="submit"
-                className="mt-4 bg-fire-500 hover:bg-fire-600"
-              >
-                <SparklesIcon className="w-4 h-4 mr-2" /> Classify Reviews
-              </Button>
-            </form>
+            <FormFile />
           </TabsContent>
         </Tabs>
       </div>

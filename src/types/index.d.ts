@@ -17,3 +17,11 @@ export interface GenerateDatasetProps {
   backgroundColors?: string | string[];
   indexAxis?: string;
 }
+
+export interface ResultTextProps {
+  prediction: {
+    aspek: string;
+    preprocessed: string;
+    sentimen: string;
+  };
+}
