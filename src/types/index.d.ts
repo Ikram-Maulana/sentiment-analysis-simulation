@@ -25,3 +25,19 @@ export interface ResultTextProps {
     sentimen: string;
   };
 }
+
+export interface ResultFileProps {
+  data: {
+    Ulasan: string;
+    cleaned_comment: string;
+    sentimen: string;
+    aspek: string;
+  };
+}
+
+export type PredictResult = {
+  Ulasan: string;
+  cleaned_comment: string;
+  sentimen: string;
+  aspek: string;
+};

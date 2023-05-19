@@ -380,7 +380,7 @@ export default function MetricsDashboard({ metrics }: any) {
   return (
     <section id="chart">
       <Tabs defaultValue="general" className="mt-8 lg:mt-6">
-        <TabsList className="grid w-full grid-cols-4 gap-4 mb-8 lg:mb-6 overflow-x-auto">
+        <TabsList className="grid w-full grid-cols-4 gap-4 mb-8 overflow-x-auto lg:mb-6">
           <TabsTrigger
             value="general"
             className="flex gap-2 font-semibold lg:text-xs"
@@ -407,7 +407,7 @@ export default function MetricsDashboard({ metrics }: any) {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="general">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-2">
+          <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:mt-2">
             <ChartCard
               title="Jumlah Sentimen"
               value={posnegData}
@@ -435,7 +435,7 @@ export default function MetricsDashboard({ metrics }: any) {
           </div>
         </TabsContent>
         <TabsContent value="bug">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-2">
+          <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:mt-2">
             <ChartCard
               title="Jumlah Sentimen"
               value={bugPosnegData}
@@ -481,7 +481,7 @@ export default function MetricsDashboard({ metrics }: any) {
           </div>
         </TabsContent>
         <TabsContent value="kegunaan">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-2">
+          <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:mt-2">
             <ChartCard
               title="Jumlah Sentimen"
               value={kegunaanPosnegData}
@@ -527,7 +527,7 @@ export default function MetricsDashboard({ metrics }: any) {
           </div>
         </TabsContent>
         <TabsContent value="pembayaran">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-2">
+          <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:mt-2">
             <ChartCard
               title="Jumlah Sentimen"
               value={pembayaranPosnegData}
