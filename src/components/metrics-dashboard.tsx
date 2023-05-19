@@ -1,7 +1,7 @@
 "use client";
 
 import ChartCard from "@/components/chart-card";
-import { generateDataset } from "@/lib/utils";
+import { generateDataset, toastSelectedTag } from "@/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
 import { useState } from "react";
 
@@ -435,7 +435,50 @@ export default function MetricsDashboard({ metrics }: any) {
           </div>
         </TabsContent>
         <TabsContent value="bug">
-          <h1>bug</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-2">
+            <ChartCard
+              title="Jumlah Sentimen"
+              value={bugPosnegData}
+              chartType="pie"
+            />
+            <ChartCard
+              title="Jumlah Rating"
+              value={bugRating}
+              chartType="pie"
+            />
+            <ChartCard
+              title="Jumlah Sentimen (Bulan)"
+              value={sentimentDataBugPerMonth}
+              className="md:col-span-2"
+              chartType="bar"
+            />
+            <ChartCard
+              title="15 Ulasan Teratas (Positif)"
+              value={fifteenMostCommonBugWordsPos}
+              className="md:col-span-2"
+              chartType="bar"
+            />
+            <ChartCard
+              title="Wordcloud (Positif)"
+              tags={wordcloudBugPos}
+              toastSelectedTag={toastSelectedTag}
+              className="md:col-span-2"
+              chartType="wordcloud"
+            />
+            <ChartCard
+              title="15 Ulasan Teratas (Negatif)"
+              value={fifteenMostCommonBugWordsNeg}
+              className="md:col-span-2"
+              chartType="bar"
+            />
+            <ChartCard
+              title="Wordcloud (Negatif)"
+              tags={wordcloudBugNeg}
+              toastSelectedTag={toastSelectedTag}
+              className="md:col-span-2"
+              chartType="wordcloud"
+            />
+          </div>
         </TabsContent>
         <TabsContent value="kegunaan">
           <h1>Kegunaan</h1>

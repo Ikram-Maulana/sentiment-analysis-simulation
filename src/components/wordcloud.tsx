@@ -1,3 +1,5 @@
+"use client";
+
 import { TagCloud } from "react-tagcloud";
 
 export default function WordCloud({ tags, toastSelectedTag }: any) {

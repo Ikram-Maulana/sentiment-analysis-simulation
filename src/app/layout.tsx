@@ -1,5 +1,6 @@
 import { montserrat, poppins } from "@/assets/fonts";
 import Navbar from "@/components/navbar";
+import ShowToast from "@/components/show-toast";
 import "@/styles/globals.css";
 
 export const metadata = {
@@ -55,6 +56,7 @@ export default function RootLayout({
       <body className="overflow-y-scroll antialiased bg-old-500 text-tprimary">
         <Navbar />
         {children}
+        <ShowToast />
       </body>
     </html>
   );
