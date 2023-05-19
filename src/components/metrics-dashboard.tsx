@@ -481,10 +481,53 @@ export default function MetricsDashboard({ metrics }: any) {
           </div>
         </TabsContent>
         <TabsContent value="kegunaan">
-          <h1>Kegunaan</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-2">
+            <ChartCard
+              title="Jumlah Sentimen"
+              value={kegunaanPosnegData}
+              chartType="pie"
+            />
+            <ChartCard
+              title="Jumlah Rating"
+              value={kegunaanRating}
+              chartType="pie"
+            />
+            <ChartCard
+              title="Jumlah Sentimen (Bulan)"
+              value={sentimentDataKegunaanPerMonth}
+              className="md:col-span-2"
+              chartType="bar"
+            />
+            <ChartCard
+              title="15 Ulasan Teratas (Positif)"
+              value={fifteenMostCommonKegunaanWordsPos}
+              className="md:col-span-2"
+              chartType="bar"
+            />
+            <ChartCard
+              title="Wordcloud (Positif)"
+              tags={wordcloudKegunaanPos}
+              toastSelectedTag={toastSelectedTag}
+              className="md:col-span-2"
+              chartType="wordcloud"
+            />
+            <ChartCard
+              title="15 Ulasan Teratas (Negatif)"
+              value={fifteenMostCommonKegunaanWordsNeg}
+              className="md:col-span-2"
+              chartType="bar"
+            />
+            <ChartCard
+              title="Wordcloud (Negatif)"
+              tags={wordcloudKegunaanNeg}
+              toastSelectedTag={toastSelectedTag}
+              className="md:col-span-2"
+              chartType="wordcloud"
+            />
+          </div>
         </TabsContent>
         <TabsContent value="pembayaran">
-          <h1>Pembayaran</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 lg:mt-2"></div>
         </TabsContent>
       </Tabs>
     </section>
