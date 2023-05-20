@@ -6,7 +6,7 @@ export default function ResultText({ prediction }: ResultTextProps) {
       <div
         className={`flex gap-2 ${
           prediction.preprocessed.length <= 62
-            ? "flex-row items-center"
+            ? "flex-col md:flex-row md:items-center"
             : "flex-col"
         }`}
       >
