@@ -4,7 +4,7 @@ import { numberWithCommas } from "@/lib/utils";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dashboard | Aspect Based Sentiment Classification Simulation",
+  title: "Dashboard | Klasisfikasi Sentimen Berdasarkan Aspek",
 };
 
 const fetchMetrics = async () => {
@@ -19,14 +19,14 @@ export default async function Dashboard() {
     <main>
       <div className="container max-w-3xl pt-10 pb-12">
         <h1 className="text-4xl font-extrabold tracking-tight scroll-m-20 lg:text-5xl font-montserrat">
-          Dashboard Metrics 💡
+          Metrik Dashboard 💡
         </h1>
         <p className="leading-7 [&:not(:first-child)]:mt-4 text-tprimary/60">
-          The dashboard page will display metrics from the results of sentiment
-          classification and aspects carried out by the model that has been
-          created based on data from{" "}
+          Halaman dashboard akan menampilkan metrik dari hasil klasifikasi
+          sentimen dan aspek yang dilakukan oleh model yang telah dibuat
+          berdasarkan data dari bulan{" "}
           <span className="p-1 rounded-sm bg-bone-500/80">
-            August 2022 - March 2023
+            Agustus 2022 - Maret 2023
           </span>
           .
         </p>

@@ -385,7 +385,7 @@ export default function MetricsDashboard({ metrics }: any) {
             value="general"
             className="flex gap-2 font-semibold lg:text-xs"
           >
-            General
+            Umum
           </TabsTrigger>
           <TabsTrigger
             value="bug"
