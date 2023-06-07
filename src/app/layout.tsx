@@ -5,8 +5,8 @@ import "@/styles/globals.css";
 
 export const metadata = {
   description:
-    "This website serves as a tool to simulate the sentiment classification process and aspects of user reviews of the MyPertamina application using the Support Vector Machine (SVM) algorithm.",
-  applicationName: "Aspect Based Sentiment Classification Simulation",
+    "Website ini berfungsi sebagai alat untuk mensimulasikan proses klasifikasi sentimen dan aspek dari ulasan pengguna aplikasi MyPertamina menggunakan algoritma Support Vector Machine (SVM).",
+  applicationName: "Simulasi Klasifikasi Sentimen Berdasarkan Aspek",
   keywords: [
     "Ikram Maulana",
     "Ikram Maulana Portfolio",
@@ -15,9 +15,14 @@ export const metadata = {
     "Full Stack Web Developer",
     "React Developer",
     "Sentimen Analysis",
+    "Sentimen Analisis",
+    "Klasifikasi Sentimen",
     "Aspect Based Sentiment Classification",
+    "Klasifikasi Sentimen Berdasarkan Aspek",
     "Aspect Based Sentiment Classification Simulation",
+    "Simulasi Klasifikasi Sentimen Berdasarkan Aspek",
     "Aspect Based Sentiment Classification Simulation Website",
+    "Website Simulasi Klasifikasi Sentimen Berdasarkan Aspek",
   ],
   authors: [
     {
@@ -28,11 +33,11 @@ export const metadata = {
   creator: "Ikram Maulana",
   openGraph: {
     type: "website",
-    title: "Aspect Based Sentiment Classification Simulation",
+    title: "Simulasi Klasifikasi Sentimen Berdasarkan Aspek",
     description:
-      "This website serves as a tool to simulate the sentiment classification process and aspects of user reviews of the MyPertamina application using the Support Vector Machine (SVM) algorithm.",
+      "Website ini berfungsi sebagai alat untuk mensimulasikan proses klasifikasi sentimen dan aspek dari ulasan pengguna aplikasi MyPertamina menggunakan algoritma Support Vector Machine (SVM).",
     url: "https://sentiment.ikram-maulana.tech",
-    site_name: "Aspect Based Sentiment Classification Simulation",
+    site_name: "Simulasi Klasifikasi Sentimen Berdasarkan Aspek",
   },
   icons: {
     icon: "/favicon.ico",

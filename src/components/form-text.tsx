@@ -20,11 +20,11 @@ export default function FormText() {
     const text = e.target[0].value;
     // Client-side validation for text should not null and not have html special characters
     if (text === "") {
-      toast.error("Text must not be empty");
+      toast.error("Teks tidak boleh kosong");
       return;
     }
     if (text.match(/<|>/g)) {
-      toast.error("Text must not have html special characters");
+      toast.error("Text tidak boleh mengandung karakter khusus html");
       return;
     }
 
@@ -44,13 +44,13 @@ export default function FormText() {
           setIsLoading(false);
 
           if (data.data.preprocessed === "") {
-            toast.error("Please try again with a different review text");
+            toast.error("Mohon coba lagi dengan teks ulasan yang berbeda");
           } else {
-            toast.success("Text classified successfully");
+            toast.success("Teks berhasil diklasifikasikan");
           }
         });
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Terjadi kesalahan");
       setIsLoading(false);
     }
   };
@@ -58,7 +58,7 @@ export default function FormText() {
   return (
     <>
       <form onSubmit={handleTextClassify}>
-        <Textarea placeholder="Enter review text here" />
+        <Textarea placeholder="Masukkan teks ulasan di sini" />
         <Button
           type="submit"
           className="mt-4 bg-fire-500 hover:bg-fire-600"
@@ -69,7 +69,7 @@ export default function FormText() {
           ) : (
             <SparklesIcon className="w-4 h-4 mr-2" />
           )}{" "}
-          Classify Reviews
+          Klasifikasikan Ulasan
         </Button>
       </form>
 
