@@ -16,18 +16,18 @@ export default function FormFile() {
     const inputFile = e.target[0].files[0];
     // Client-side validation for not null, file type and size
     if (!inputFile) {
-      toast.error("File must not be empty");
+      toast.error("File tidak boleh kosong");
       return;
     }
     if (
       inputFile.type !==
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     ) {
-      toast.error("File type must be XLSX");
+      toast.error("Tipe file harus XLSX");
       return;
     }
     if (inputFile.size > 1024 * 1024) {
-      toast.error("File size must be less than 1MB");
+      toast.error("Ukurang file harus kurang dari 1MB");
       return;
     }
 
@@ -46,13 +46,13 @@ export default function FormFile() {
           setIsLoading(false);
 
           if (data.data.length === 0) {
-            toast.error("Please try again with a different file");
+            toast.error("Mohon coba lagi dengan file yang berbeda");
           } else {
-            toast.success("File classified successfully");
+            toast.success("File berhasil diklasifikasikan");
           }
         });
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Terjadi kesalahan");
       setIsLoading(false);
     }
   };
@@ -62,8 +62,8 @@ export default function FormFile() {
       <form onSubmit={handleFileClassify} encType="multipart/form-data">
         <Input id="file-reviews" type="file" />
         <p className="mt-2 lg:text-xs text-muted-foreground">
-          * The File Must Have the XLSX Type According to the Template and a
-          Maximum of 100 Review Lines.
+          * File Harus Memiliki Tipe XLSX Sesuai dengan Template dan Maksimal
+          Memiliki 100 Baris Ulasan.
         </p>
         <Button
           type="submit"
@@ -75,7 +75,7 @@ export default function FormFile() {
           ) : (
             <SparklesIcon className="w-4 h-4 mr-2" />
           )}{" "}
-          Classify Reviews
+          Klasifikasikan Ulasan
         </Button>
       </form>
 
