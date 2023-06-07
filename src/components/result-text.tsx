@@ -11,7 +11,7 @@ export default function ResultText({ prediction }: ResultTextProps) {
         }`}
       >
         <h2 className="text-2xl font-extrabold tracking-tight font-montserrat scroll-m-20">
-          Preprocessed Text:
+          Teks Preprocessed:
         </h2>
         <p className="leading-7">{prediction.preprocessed}</p>
       </div>
@@ -21,12 +21,12 @@ export default function ResultText({ prediction }: ResultTextProps) {
         }`}
       >
         <h2 className="text-xl font-extrabold tracking-tight font-montserrat scroll-m-20">
-          Sentiment and Aspect:
+          Sentimen dan Aspek:
         </h2>
         <p className="leading-7">
-          The review text above includes the{" "}
-          <span className="font-bold">{prediction.sentimen}</span> sentiment and{" "}
-          <span className="font-bold">{prediction.aspek}</span> aspects
+          Ulasan di atas memiliki sentimen{" "}
+          <span className="font-bold">{prediction.sentimen}</span> dan aspek{" "}
+          <span className="font-bold">{prediction.aspek}</span>
         </p>
       </div>
     </div>

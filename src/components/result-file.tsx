@@ -13,8 +13,8 @@ export default function ResultFile({ data }: any) {
         columns: [
           { label: "Ulasan", value: "Ulasan" },
           { label: "Cleaned Comment", value: "cleaned_comment" },
-          { label: "Sentiment", value: "sentimen" },
-          { label: "Aspect", value: "aspek" },
+          { label: "Sentimen", value: "sentimen" },
+          { label: "Aspek", value: "aspek" },
         ],
         content: data,
       },
