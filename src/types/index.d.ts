@@ -1,24 +1,13 @@
-export interface ButtonsProps {
-  loading: boolean;
-}
-
-export interface PredictionProps {
-  prediction: {
-    aspek: string;
-    preprocessed: string;
-    sentimen: string;
-  };
-}
-
-export interface FormProps {
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  children: React.ReactNode;
-}
-
-export interface HeaderProps {
+export type NavItem = {
   title: string;
-  spotlight?: string;
-  description: string;
+  href: string;
+};
+
+export type MainNavItem = NavItem;
+
+export interface MetricsCardProps {
+  title: string;
+  value: number | string;
 }
 
 export interface GenerateDatasetProps {
@@ -29,7 +18,26 @@ export interface GenerateDatasetProps {
   indexAxis?: string;
 }
 
-export interface MetricsCardProps {
-  title: string;
-  value: number | string;
+export interface ResultTextProps {
+  prediction: {
+    aspek: string;
+    preprocessed: string;
+    sentimen: string;
+  };
 }
+
+export interface ResultFileProps {
+  data: {
+    Ulasan: string;
+    cleaned_comment: string;
+    sentimen: string;
+    aspek: string;
+  };
+}
+
+export type PredictResult = {
+  Ulasan: string;
+  cleaned_comment: string;
+  sentimen: string;
+  aspek: string;
+};
