@@ -2,7 +2,7 @@
 
 This is Next.js website that serves as a tool to simulate the sentiment and aspect classification process of a review text using Support Vector Machine (SVM) algorithm.
 
-Live example hosted on Vercel: https://sentext.vercel.app/
+Live example hosted on Vercel: https://sentext.vercel.app/  
 Backend API hosted on railway: **_currently unavailable because limit of railway free tier_**
 
 NOTE: The backend API project is private because it contains the algorithm code and the dataset used to train the algorithm.
