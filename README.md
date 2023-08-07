@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sentiment Analysis Simulation
 
-## Getting Started
+This is Next.js website that serves as a tool to simulate the sentiment and aspect classification process of a review text using Support Vector Machine (SVM) algorithm.
 
-First, run the development server:
+Live example hosted on Vercel: https://sentext.vercel.app/
+Backend API hosted on railway: **_currently unavailable because limit of railway free tier_**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+NOTE: The backend API project is private because it contains the algorithm code and the dataset used to train the algorithm.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Sentext](public/sentext.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🖥️ Running Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone this repo
 
-## Learn More
+   ```bash
+   https://github.com/Ikram-Maulana/sentiment-analysis-simulation.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   yarn install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Add your `PUBLIC_API_API_URL` to your `.env.local` file with your API backend URL as the value.
 
-## Deploy on Vercel
+   ```bash
+    PUBLIC_API_API_URL=...
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Run the development server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   yarn dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 🚀 Deploy Your Own
+
+1. Clone this repo
+
+   ```bash
+   https://github.com/Ikram-Maulana/sentiment-analysis-simulation.git
+   ```
+
+2. Configure project with [Vercel](https://vercel.com)
+
+3. Add your own backend API with your own algorithm to your [Vercel Project Environment Variables] (https://vercel.com/docs/environment-variables) with `PUBLIC_API_API_URL` as the key and your API URL as the value.
+
+4. Do final deploy with Vercel
+
+## 🧑‍💻 Credit
+
+- [Ikram Maulana](https://github.com/ikram-maulana) as Full Stack Web Developer and Machine Learning Engineer
